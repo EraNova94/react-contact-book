@@ -9,7 +9,6 @@ const AddContact = ({
   function changedContact(objContact) {
     setShow(true);
     setSingleEditContact(objContact);
-    // console.log(objContact);
   }
   return (
     <>

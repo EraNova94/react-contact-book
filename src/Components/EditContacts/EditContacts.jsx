@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const EditContacts = ({
   saveEditedContact,
@@ -7,21 +7,19 @@ const EditContacts = ({
   setShow,
 }) => {
   // console.log(singleEditContact);
-  const [changeContactName, setChangeContactName] = useState(
-    singleEditContact.name
-  );
+  const [changeContactName, setChangeContactName] = useState("");
+  const [changeContactEmail, setChangeContactEmail] = useState("");
+  const [changeContactNumber, setChangeContactNumber] = useState("");
+  const [changeContactImg, setChangeContactImg] = useState("");
   // console.log(changeContactName);
-  //
-  const [changeContactEmail, setChangeContactEmail] = useState(
-    singleEditContact.email
-  );
-  const [changeContactNumber, setChangeContactNumber] = useState(
-    singleEditContact.number
-  );
-  const [changeContactImg, setChangeContactImg] = useState(
-    singleEditContact.img
-  );
-  // console.log(changeContactName);
+
+  useEffect(() => {
+    setChangeContactName(singleEditContact.name);
+    setChangeContactEmail(singleEditContact.email);
+    setChangeContactNumber(singleEditContact.number);
+    setChangeContactImg(singleEditContact.img);
+  }, [singleEditContact]);
+
   function saveContacts() {
     if (
       !changeContactName.trim() ||
@@ -43,6 +41,8 @@ const EditContacts = ({
     setShow(false);
     // console.log(editObj);
   }
+  console.log(singleEditContact);
+  console.log(changeContactName);
   return (
     <>
       {show ? (
